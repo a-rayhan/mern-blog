@@ -14,7 +14,7 @@ export default function Header() {
           <div className="w-14 h-14 rounded-full bg-yellow-300 flex items-center justify-center">
             <HiOutlineLightBulb className="text-4xl" />
           </div>
-          <h1 className="font-inter text-xl font-semibold hidden md:inline">BRIGHT CODE</h1>
+          <h1 className="font-inter text-xl font-semibold hidden md:inline">BLOGFY</h1>
         </Link>
 
         <Navbar.Collapse className="hidden lg:inline">
