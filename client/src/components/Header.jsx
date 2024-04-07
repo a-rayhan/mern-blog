@@ -67,7 +67,7 @@ export default function Header() {
           <Navbar.Toggle className="bg-gray-100" />
         </div>
 
-        <Navbar.Collapse className="lg:hidden">
+        <Navbar.Collapse className="md:hidden">
           <Navbar.Link active={path === '/'} as={'div'}>
             <Link to="/" className="font-inter text-base">
               Home
