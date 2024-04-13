@@ -8,30 +8,32 @@ import { Link, useLocation } from "react-router-dom";
 export default function Header() {
   const path = useLocation().pathname;
   return (
-    <div className="shadow-lg">
-      <Navbar className="max-w-6xl mx-auto">
-        <Link to='/' className="flex items-center gap-x-3">
-          <div className="w-14 h-14 rounded-full bg-yellow-300 flex items-center justify-center">
-            <HiOutlineLightBulb className="text-4xl" />
+    <div className="bg-black">
+      <Navbar className="max-w-6xl mx-auto bg-black">
+        <Link to="/" className="flex items-center gap-x-3">
+          <div className="w-12 h-12 rounded-full bg-[#03aaff] flex items-center justify-center">
+            <HiOutlineLightBulb className="text-4xl text-white" />
           </div>
-          <h1 className="font-inter text-xl font-semibold hidden md:inline">BLOGFY</h1>
+          <h1 className="text-white font-inter text-2xl font-bold hidden md:inline">
+            digitalblogs
+          </h1>
         </Link>
 
         <Navbar.Collapse className="hidden lg:inline">
-          <Navbar.Link active={path === '/'} as={'div'}>
-            <Link to="/" className="font-inter text-base">
+          <Navbar.Link active={path === "/"} as={"div"}>
+            <Link to="/" className="font-inter text-base text-white">
               Home
             </Link>
           </Navbar.Link>
 
-          <Navbar.Link active={path === '/about'} as={'div'}>
-            <Link to="/about" className="font-inter text-base">
+          <Navbar.Link active={path === "/about"} as={"div"}>
+            <Link to="/about" className="font-inter text-base text-white">
               About
             </Link>
           </Navbar.Link>
 
-          <Navbar.Link active={path === '/projects'} as={'div'}>
-            <Link to="/projects" className="font-inter text-base">
+          <Navbar.Link active={path === "/projects"} as={"div"}>
+            <Link to="/projects" className="font-inter text-base text-white">
               Projects
             </Link>
           </Navbar.Link>
@@ -59,7 +61,7 @@ export default function Header() {
           </div>
 
           <Link to="/sign-in">
-            <button className="font-inter border-2 px-5 py-1 rounded-full border-yellow-300 font-semibold text-lg bg-yellow-300 hover:bg-transparent duration-100">
+            <button className="font-inter border-2 px-5 py-1 rounded-full border-[#03aaff] font-medium text-lg bg-[#03aaff] text-white hover:bg-transparent hover:text-white duration-100">
               Sign In
             </button>
           </Link>
@@ -68,19 +70,19 @@ export default function Header() {
         </div>
 
         <Navbar.Collapse className="md:hidden">
-          <Navbar.Link active={path === '/'} as={'div'}>
+          <Navbar.Link active={path === "/"} as={"div"}>
             <Link to="/" className="font-inter text-base">
               Home
             </Link>
           </Navbar.Link>
 
-          <Navbar.Link active={path === '/about'} as={'div'}>
+          <Navbar.Link active={path === "/about"} as={"div"}>
             <Link to="/about" className="font-inter text-base">
               About
             </Link>
           </Navbar.Link>
 
-          <Navbar.Link active={path === '/projects'} as={'div'}>
+          <Navbar.Link active={path === "/projects"} as={"div"}>
             <Link to="/projects" className="font-inter text-base">
               Projects
             </Link>
