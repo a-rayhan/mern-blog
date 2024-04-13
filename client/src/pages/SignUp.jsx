@@ -64,7 +64,7 @@ export default function SignUp() {
             type="text"
             id="username"
             placeholder="Username"
-            className="w-[100%] rounded-md px-5 bg-[#f3f3f6] border border-[#f3f3f6] focus:bg-transparent font-medium font-inter mb-3"
+            className="w-[100%] rounded-md px-5 bg-[#f3f3f6] border border-[#f3f3f6] focus:bg-transparent font-inter mb-3"
             onChange={handleChange}
           />
 
@@ -73,7 +73,7 @@ export default function SignUp() {
             type="text"
             id="email"
             placeholder="Email"
-            className="w-[100%] rounded-md px-5 bg-[#f3f3f6] border border-[#f3f3f6] focus:bg-transparent font-medium font-inter mb-3"
+            className="w-[100%] rounded-md px-5 bg-[#f3f3f6] border border-[#f3f3f6] focus:bg-transparent font-inter mb-3"
             onChange={handleChange}
           />
 
@@ -82,7 +82,7 @@ export default function SignUp() {
             type="password"
             id="password"
             placeholder="Password"
-            className="w-[100%] rounded-md px-5 bg-[#f3f3f6] border border-[#f3f3f6] focus:bg-transparent font-medium font-inter mb-4"
+            className="w-[100%] rounded-md px-5 bg-[#f3f3f6] border border-[#f3f3f6] focus:bg-transparent font-inter mb-4"
             onChange={handleChange}
           />
 
