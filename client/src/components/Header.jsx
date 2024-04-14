@@ -61,7 +61,7 @@ export default function Header() {
           </div>
 
           <Link to="/sign-in">
-            <button className="font-inter border-2 px-5 py-1 rounded-full border-[#03aaff] font-medium text-lg bg-[#03aaff] text-white hover:bg-transparent hover:text-white duration-100">
+            <button className="font-inter border-2 px-5 py-1 rounded-full border-[#03aaff] font-medium text-lg bg-[#03aaff] text-white duration-100">
               Sign In
             </button>
           </Link>
