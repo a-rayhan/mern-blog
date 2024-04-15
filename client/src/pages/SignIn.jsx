@@ -8,6 +8,7 @@ import {
   signInSuccess,
   signInFailure,
 } from "../redux/user/userSlice";
+import OAuth from "../components/OAuth";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
@@ -111,10 +112,7 @@ export default function SignIn() {
           <div className="w-full bg-gray-400 h-[1px]"></div>
         </div>
 
-        <button className="border-2 w-full font-inter font-medium rounded-lg py-2 flex items-center gap-x-3 justify-center">
-          <FcGoogle className="text-2xl" />
-          Continue with Google
-        </button>
+        <OAuth />
 
         <p className="text-center mt-5">
           Have no acount?{" "}
