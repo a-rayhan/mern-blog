@@ -1,12 +1,14 @@
 import React from "react";
-import { Button, Navbar, TextInput } from "flowbite-react";
+import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
 import { AiOutlineSearch } from "react-icons/ai";
-import { FaMoon } from "react-icons/fa";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const path = useLocation().pathname;
+  const { currentUser } = useSelector((state) => state.user);
+
   return (
     <div className="bg-black">
       <Navbar className="max-w-6xl mx-auto bg-black">
@@ -56,15 +58,40 @@ export default function Header() {
             <AiOutlineSearch className="text-xl" />
           </div>
 
-          <div className="w-10 h-10 rounded-full hover:bg-gray-100 flex justify-center items-center hover:duration-100 cursor-pointer">
-            <FaMoon className="text-xl" />
-          </div>
+          {currentUser ? (
+            <Dropdown
+              arrowIcon={false}
+              inline
+              label={
+                <Avatar alt="user" img={currentUser.profilePicture} rounded />
+              }
+            >
+              <Link to={"/dashboard?tab=profile"}>
+                <Dropdown.Item className="text-base font-medium font-inter">Profile</Dropdown.Item>
+              </Link>
 
-          <Link to="/sign-in">
-            <button className="font-inter border-2 px-5 py-1 rounded-full border-[#03aaff] font-medium text-lg bg-[#03aaff] text-white duration-100">
-              Sign In
-            </button>
-          </Link>
+              <Dropdown.Divider />
+
+              <Dropdown.Item className="text-base font-medium font-inter">Sign out</Dropdown.Item>
+
+              <Dropdown.Divider />
+
+              <Dropdown.Header>
+                <span className="block font-inter">
+                  {currentUser.username}
+                </span>
+                <span className="block font-inter truncate">
+                  {currentUser.email}
+                </span>
+              </Dropdown.Header>
+            </Dropdown>
+          ) : (
+            <Link to="/sign-in">
+              <button className="font-inter border-2 px-5 py-1 rounded-full border-[#03aaff] font-medium text-lg bg-[#03aaff] text-white duration-100">
+                Sign In
+              </button>
+            </Link>
+          )}
 
           <Navbar.Toggle className="bg-gray-100" />
         </div>
