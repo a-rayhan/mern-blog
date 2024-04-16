@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
+import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { Link, useLocation } from "react-router-dom";
