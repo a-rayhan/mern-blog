@@ -3,11 +3,30 @@ import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { signedOutSuccess } from "../redux/user/userSlice";
 
 export default function Header() {
   const path = useLocation().pathname;
   const { currentUser } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const handleSignedOut = async () => {
+    try {
+      const res = await fetch("/api/user/signout", {
+        method: "POST",
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        dispatch(signedOutSuccess());
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className="bg-black">
@@ -67,19 +86,24 @@ export default function Header() {
               }
             >
               <Link to={"/dashboard?tab=profile"}>
-                <Dropdown.Item className="text-base font-medium font-inter">Profile</Dropdown.Item>
+                <Dropdown.Item className="text-base font-medium font-inter">
+                  Profile
+                </Dropdown.Item>
               </Link>
 
               <Dropdown.Divider />
 
-              <Dropdown.Item className="text-base font-medium font-inter">Sign out</Dropdown.Item>
+              <Dropdown.Item
+                onClick={handleSignedOut}
+                className="text-base font-medium font-inter"
+              >
+                Sign out
+              </Dropdown.Item>
 
               <Dropdown.Divider />
 
               <Dropdown.Header>
-                <span className="block font-inter">
-                  {currentUser.username}
-                </span>
+                <span className="block font-inter">{currentUser.username}</span>
                 <span className="block font-inter truncate">
                   {currentUser.email}
                 </span>

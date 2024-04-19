@@ -14,6 +14,7 @@ import "react-circular-progressbar/dist/styles.css";
 import {
   deleteFailure,
   deleteSuccess,
+  signedOutSuccess,
   updateFailure,
   updateStart,
   updateSuccess,
@@ -136,6 +137,23 @@ export default function DashProfile() {
       }
     } catch (error) {
       dispatch(deleteFailure(error.message));
+    }
+  };
+
+  const handleSignedOut = async () => {
+    try {
+      const res = await fetch("/api/user/signout", {
+        method: "POST",
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        dispatch(signedOutSuccess());
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   };
 
@@ -263,7 +281,9 @@ export default function DashProfile() {
         <button onClick={() => setShowModal(true)} className="cursor-pointer">
           Delete Account
         </button>
-        <button className="cursor-pointer">Sign Out</button>
+        <button onClick={handleSignedOut} className="cursor-pointer">
+          Sign Out
+        </button>
       </div>
 
       <Modal
