@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Sidebar } from "flowbite-react";
 import { HiArrowSmRight, HiUser } from "react-icons/hi";
 import { Link, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signedOutSuccess } from "../redux/user/userSlice";
 
 export default function DashSidebar() {
   const [tab, setTab] = useState("");
   const location = useLocation();
   const dispatch = useDispatch();
+
+  const { currentUser } = useSelector((state) => state.user);
 
   const handleSignedOut = async () => {
     try {
@@ -43,7 +45,7 @@ export default function DashSidebar() {
             <Sidebar.Item
               active={tab === "profile"}
               icon={HiUser}
-              label={"User"}
+              label={(currentUser.isAdmin && "Admin") || "User"}
               labelColor="dark"
               className="cursor-pointer"
               as="div"

@@ -8,7 +8,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { storage } from "redux-persist/lib/storage";
-import { Alert, Button, Modal } from "flowbite-react";
+import { Alert, Button, Modal, Spinner } from "flowbite-react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import {
@@ -20,9 +20,10 @@ import {
   updateSuccess,
 } from "../redux/user/userSlice";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 export default function DashProfile() {
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, loading } = useSelector((state) => state.user);
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const filePickerRef = useRef();
@@ -271,10 +272,29 @@ export default function DashProfile() {
 
         <button
           type="submit"
-          className="bg-[#03aaff] w-[100%] rounded-md py-2 border border-[#03aaff] font-medium font-inter text-white text-xl"
+          className="bg-[#03aaff] w-[100%] rounded-md py-2 border-2 border-[#03aaff] font-medium font-inter text-white text-xl"
+          disabled={loading || imageFileUploading}
         >
-          Update
+          {loading ? (
+            <>
+              <Spinner size="sm" />
+              <span className="pl-3">Loading...</span>
+            </>
+          ) : (
+            "Update"
+          )}
         </button>
+
+        {currentUser.isAdmin && (
+          <Link to={"/create-post"}>
+            <button
+              type="submit"
+              className="w-[100%] rounded-md py-7 border-2 border-dotted border-[#03aaff] font-medium font-inter hover:text-[#03aaff] text-xl duration-200 mt-3"
+            >
+              Create a post
+            </button>
+          </Link>
+        )}
       </form>
 
       <div className="flex justify-between text-base font-inter font-medium my-5 px-1 text-red-500">
